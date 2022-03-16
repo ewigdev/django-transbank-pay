@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from bazar_transbank.views.home import home
 from bazar_transbank.views.cart import cart
+from bazar_transbank.views.svg import SvgPageView, SvgPageTwoView
 from bazar_transbank.views.transbankpay import commitpay, webpay_plus_create
 from django.conf.urls.static import static
 from django.conf import settings
@@ -27,6 +28,8 @@ urlpatterns = [
     path('', home),
     path('home/', home),
     path('cart/', cart),
+    path('svg/', SvgPageTwoView.as_view(), name="svg-two"),
+    path('test/', SvgPageView.as_view(), name="svg"),
     path('commit-pay/', commitpay),
     path('webpay-plus-create', webpay_plus_create),  
 ] +static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
